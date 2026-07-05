@@ -2,11 +2,21 @@ import AstalMpris from "gi://AstalMpris"
 import {createBinding, createComputed, For, With} from "gnim";
 import {Gtk} from "ags/gtk4";
 
-// todo: style submenu
-// todo: dedupe mpd entries
 export default function Mpris() {
 	const mpris = AstalMpris.get_default()
-	const players = createBinding(mpris, "players")
+
+	const players = createComputed(() => {
+		const seen = new Set<string>()
+		const result: AstalMpris.Player[] = []
+		for (const player of createBinding(mpris, "players")()) {
+			const key = player.identity ?? player.busName
+			if (!seen.has(key)) {
+				seen.add(key)
+				result.push(player)
+			}
+		}
+		return result
+	})
 
 	return (
 		<menubutton>
