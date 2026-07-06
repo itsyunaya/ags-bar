@@ -20,6 +20,19 @@ window.Bar {
 		margin: 2px;
 	}
 
+	popover > contents {
+		background-color: $bg-color;
+		color: $fg-color;
+	}
+
+	popover > contents calendar {
+		color: $fg-color;
+	}
+
+	popover > arrow {
+		background-color: $bg-color;
+	}
+
 	.elem {
 		background-color: #2B292F;
 		border-radius: 10px;
