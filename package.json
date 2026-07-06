@@ -4,7 +4,16 @@
     "gnim": "*"
   },
   "prettier": {
-    "semi": false,
-    "tabWidth": 2
+    "singleQuote": true,
+    "trailingComma": "es5",
+    "semi": true,
+    "tabWidth": 4,
+    "printWidth": 100,
+    "bracketSpacing": true,
+    "arrowParens": "always",
+    "useTabs": true
+  },
+  "devDependencies": {
+    "prettier": "^3.9.4"
   }
 }

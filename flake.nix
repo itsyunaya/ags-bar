@@ -13,25 +13,27 @@
 	outputs = { self, nixpkgs, ags }: let
 		system = "x86_64-linux";
 		pkgs = nixpkgs.legacyPackages.${system};
-		pname = "my-shell";
+		pname = "ags-bar";
 		entry = "app.ts";
 
 		# when adding a new lib and regenning typedecs you **need** to specify
 		# the current dir else ags will put them somewhere in .config
 		# do `ags types -d . -u` from the proj root
-		astalPackages = with ags.packages.${system}; [
-			io
-			astal4
-			mpris
-			apps
-			tray
-			hyprland
-			wireplumber
-			bluetooth
-		];
+		astalPackages = builtins.attrValues {
+			inherit
+				(ags.packages.${system})
+				astal4
+				bluetooth
+				hyprland
+				mpris
+				tray
+				wireplumber
+				;
+		};
 
 		extraPackages =
-			astalPackages ++ [
+			astalPackages
+			++ [
 				pkgs.libadwaita
 				pkgs.libsoup_3
 			];
