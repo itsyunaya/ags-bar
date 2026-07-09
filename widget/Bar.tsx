@@ -9,6 +9,7 @@ import ActiveWindow from './middle/ActiveWindow';
 import Audio from './right/Audio';
 import Bluetooth from './right/Bluetooth';
 import CPU from './right/Cpu';
+import Water from './right/Water';
 
 export default function Bar(gdkmonitor: Gdk.Monitor) {
 	const { TOP, LEFT, RIGHT } = Astal.WindowAnchor;
@@ -36,6 +37,7 @@ export default function Bar(gdkmonitor: Gdk.Monitor) {
 				</box>
 
 				<box spacing={globalSpacing} $type="end">
+					<Water />
 					<Tray />
 					<Bluetooth />
 					<CPU />
