@@ -1,12 +1,10 @@
-import { createComputed, createState, onCleanup } from 'gnim';
+import { createComputed, onCleanup } from 'gnim';
 import { Gtk } from 'ags/gtk4';
+import { setWaterRemTime, waterCooldown, waterRemTime } from '../../state';
 
 export default function Water() {
-	const cooldown = 7200;
-
-	const [resTime, setResTime] = createState<number>(cooldown);
 	const id = setInterval(() => {
-		if (resTime() > 0) setResTime(resTime() - 1);
+		if (waterRemTime() > 0) setWaterRemTime(waterRemTime() - 1);
 	}, 1000);
 
 	const normalize = (value: number, min: number, max: number): number => {
@@ -17,14 +15,14 @@ export default function Water() {
 	onCleanup(() => clearInterval(id));
 
 	return (
-		<button onClicked={() => setResTime(cooldown)}>
+		<button onClicked={() => setWaterRemTime(waterCooldown)}>
 			<box spacing={8}>
 				<label label="󰖌" />
 				<levelbar
 					valign={Gtk.Align.CENTER}
 					heightRequest={13}
 					widthRequest={80}
-					value={createComputed(() => normalize(resTime(), 0, cooldown))}
+					value={createComputed(() => normalize(waterRemTime(), 0, waterCooldown))}
 				/>
 			</box>
 		</button>
