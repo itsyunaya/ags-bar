@@ -1,4 +1,5 @@
 import AstalMpris from 'gi://AstalMpris';
+import Pango from 'gi://Pango';
 import { createBinding, createComputed, For, With } from 'gnim';
 import { Gtk } from 'ags/gtk4';
 
@@ -35,6 +36,8 @@ export default function Mpris() {
 								/>
 								<label
 									xalign={0}
+									max_width_chars={40}
+									ellipsize={Pango.EllipsizeMode.END}
 									label={createComputed(() => {
 										const artist = createBinding(player, 'artist')();
 										const title = createBinding(player, 'title')();
@@ -47,7 +50,7 @@ export default function Mpris() {
 				</With>
 			</box>
 			<popover>
-				<box spacing={4} orientation={Gtk.Orientation.VERTICAL}>
+				<box spacing={15} orientation={Gtk.Orientation.VERTICAL}>
 					<For each={players}>
 						{(player) => (
 							<box spacing={4} widthRequest={200}>
@@ -61,8 +64,18 @@ export default function Mpris() {
 									valign={Gtk.Align.CENTER}
 									orientation={Gtk.Orientation.VERTICAL}
 								>
-									<label xalign={0} label={createBinding(player, 'artist')} />
-									<label xalign={0} label={createBinding(player, 'title')} />
+									<label
+										xalign={0}
+										max_width_chars={20}
+										ellipsize={Pango.EllipsizeMode.END}
+										label={createBinding(player, 'artist')}
+									/>
+									<label
+										xalign={0}
+										max_width_chars={20}
+										ellipsize={Pango.EllipsizeMode.END}
+										label={createBinding(player, 'title')}
+									/>
 								</box>
 								<box hexpand halign={Gtk.Align.END}>
 									<button

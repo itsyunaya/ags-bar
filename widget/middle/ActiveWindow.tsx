@@ -12,7 +12,7 @@ export default function ActiveWindow() {
 				{(c) =>
 					c && (
 						<label
-							max_width_chars={140}
+							max_width_chars={100}
 							ellipsize={Pango.EllipsizeMode.END}
 							label={createBinding(c, 'title')}
 						/>
