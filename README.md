@@ -14,7 +14,7 @@ Here is a screenshot of the bar, more might be added later.
 - Hyprland workspaces indicator
 - Mpris integration for music info/control
 - Currently active Hyprland window indicator
-- Water indicator to remind yourself to drink enough
+- Water indicator to remind yourself to drink enough (hidable via `--hide-water-widget`)
 - Tray submenu
 - Simple bluetooth indicator/menu
 - CPU usage indicator

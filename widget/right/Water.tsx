@@ -1,8 +1,15 @@
 import { createComputed, onCleanup } from 'gnim';
 import { Gtk } from 'ags/gtk4';
-import { setWaterRemTime, waterCooldown, waterRemTime } from '../../state';
+import {
+	hideWaterWidget,
+	setWaterRemTime,
+	waterCooldown,
+	waterRemTime,
+} from '../../state';
 
 export default function Water() {
+	if (hideWaterWidget) return <></>;
+
 	const id = setInterval(() => {
 		if (waterRemTime() > 0) setWaterRemTime(waterRemTime() - 1);
 	}, 1000);
