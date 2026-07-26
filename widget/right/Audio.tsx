@@ -47,7 +47,7 @@ export default function Audio() {
 			<button
 				onClicked={async () => {
 					await execAsync(
-						'hyprctl dispatch \'hl.dsp.exec_cmd("pavucontrol", { float = true, size = {1000, 500}})\''
+						'hyprctl dispatch \'hl.dsp.exec_cmd("pwvucontrol", { float = true, size = {1000, 500}})\''
 					);
 				}}
 				$={(self) => scrollControl(self, (dy) => adjust(speaker, dy))}
