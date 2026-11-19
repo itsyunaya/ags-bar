@@ -1,5 +1,5 @@
 # Moved to tangled!
-This project has been moved to https://tangled.org/itsyunaya.tngl.sh/nightingale.
+This project has been moved to https://tangled.org/itsyunaya.app/nightingale.
 
 # ags-bar
 ## Introduction
